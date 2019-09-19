@@ -7,10 +7,14 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
+import org.springframework.scheduling.annotation.EnableScheduling
 import java.io.File
 
 
-@SpringBootApplication
+@SpringBootApplication(
+    scanBasePackages = ["br.com.thyago"]
+)
+@EnableScheduling
 class PrometheusExporterApplicationConfig {
     @Bean
     fun monitoringQueries(): List<MonitoringQuery> {

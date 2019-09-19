@@ -1,0 +1,18 @@
+name: amount_of_incident_activate_offer_item
+description: Gauge to how many incidents are in the database
+type: gauge
+labels:
+- 'incident_type'
+- 'activity_id'
+
+query: |
+  select
+    incident_type_ as incident_type,
+    activity_id_ as activity_id,
+    count(0) as amount
+  from
+    act_ru_incident
+  where
+    activity_id_ = 'ACTIVATE_OFFERS_ITEMS'
+  group by
+    incident_type, activity_id;
